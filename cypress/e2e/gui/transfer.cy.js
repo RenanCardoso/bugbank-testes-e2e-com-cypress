@@ -50,7 +50,7 @@ describe('Transferência', () => {
     }
     cy.guiCreateAccount(newUser)
     cy.guiLogin(newUser)
-    cy.MakeTransfer(user, transfer)
+    cy.doTransfer(user, transfer)
     cy.get('#modalText')
       .should('contain.text', 'Transferencia realizada com sucesso')
   })
@@ -59,7 +59,7 @@ describe('Transferência', () => {
     it('conta não existe', () => {
       user.number_account = '0000'
       user.digit = '0'
-      cy.MakeTransfer(user, transfer)
+      cy.doTransfer(user, transfer)
       cy.get('#modalText')
         .should('contain.text', 'Conta inválida ou inexistente')
     })
@@ -74,13 +74,13 @@ describe('Transferência', () => {
       }
       cy.guiCreateAccount(newUser)
       cy.guiLogin(newUser)
-      cy.MakeTransfer(user, transfer)
+      cy.doTransfer(user, transfer)
       cy.get('#modalText')
         .should('contain.text', 'Você não tem saldo suficiente para essa transação')
     })
 
     it('realizar transferência para si mesmo', () => {
-      cy.MakeTransfer(user, transfer)
+      cy.doTransfer(user, transfer)
       cy.get('#modalText')
         .should('contain.text', 'Nao pode transferir pra mesmo conta')
     })

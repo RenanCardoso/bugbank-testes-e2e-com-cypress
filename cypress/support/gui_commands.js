@@ -23,12 +23,12 @@ Cypress.Commands.add('guiCreateAccount', (user) => {
   cy.contains('Cadastrar').click({ force: true })
 })
 
-Cypress.Commands.add('MakeTransfer', (user, transfer) => {
+Cypress.Commands.add('doTransfer', (user, transfer) => {
   cy.get('#btn-TRANSFERÊNCIA').click()
-  cy.get('.card__register input[name="accountNumber"]').type(user.number_account)
-  cy.get('.card__register input[name="digit"]').type(user.digit)
-  cy.get('.card__register input[name="transferValue"]').type(transfer.value)
-  cy.get('.card__register input[name="description"]').type(transfer.description)
+  cy.get('.account__data input[name="accountNumber"]').type(user.number_account)
+  cy.get('.account__data input[name="digit"]').type(user.digit)
+  cy.get('input[name="transferValue"]').type(transfer.value)
+  cy.get('input[name="description"]').type(transfer.description)
   cy.contains('Transferir agora').click()
 })
 
