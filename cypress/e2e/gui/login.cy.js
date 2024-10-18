@@ -15,7 +15,7 @@ describe('Login', () => {
     cy.get('#textName').siblings()
       .should('contain.text', 'bem vindo ao BugBank :)')
     // Verificar se estou na home
-    cy.url().should('be.equal', `${Cypress.config('baseUrl')}/home`)
+    cy.url().should('be.equal', `${Cypress.config('baseUrl')}/homeaa`)
   })
 
   it('realizar login com usuário que não existe', () => {
